@@ -13,16 +13,16 @@ class AnimOne extends Component {
     constructor() {
         super();
         this.state = {
-            mySquare: new Animated.ValueXY(0, 0),
+            mySquare: new Animated.Value(1),
         }
     }
 
     runAnimation = () => {
         Animated.timing(this.state.mySquare, {    // spring, timing
-            toValue: {x: 50, y: 300},
+            toValue: 0,
             duration: 2000,
             delay: 1000,
-            easing: Easing.elastic(3), // bounce, elastic
+            // easing: Easing.elastic(3), // bounce, elastic
         }).start();
     }
 
@@ -30,11 +30,12 @@ class AnimOne extends Component {
         return (
             <View>
                 <Animated.View
-                    style={this.state.mySquare.getLayout()}
-                    // style={{
-                    //     left: this.mySquare.x,
-                    //     top: this.mySquare.y,
-                    // }}
+                    // style={this.state.mySquare.getLayout()}
+                    style={{
+                        opacity: this.state.mySquare
+                        // left: this.mySquare.x,
+                        // top: this.mySquare.y,
+                    }}
                 >
                     <View style={styles.square}>
                     </View>
